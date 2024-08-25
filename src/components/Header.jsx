@@ -60,12 +60,18 @@ const Header = () => {
       animate={isActive ? 'show' : ''}
       className='fixed w-full max-w-[1800px] z-50 py-4 bg-pink-200'
     >
-      <div className='container mx-auto'>
+      <motion.div 
+        variants={staggerContainer(0.3, 1)}
+        initial="hidden"
+        animate={'show'}
+        className='container mx-auto'
+      >
         <div className='flex justify-between items-center px-4 lg:px-0 relative text-white'>
           
           {/* menu button */}
           <motion.div 
             onClick={() => setNav(!nav)}
+            variants={fadeIn('down', 'tween', 1, 1.4)}
             className={`
               ${nav ? 'gap-y-0' : 'gap-y-2'}
               flex bg-red-400 flex-col items-center justify-center w-12 h-12 p-3 order-2 lg:order-none cursor-pointer border-2 rounded-full`}
@@ -83,7 +89,10 @@ const Header = () => {
           </motion.div>
           
           {/* logo */}
-          <div>
+          <motion.div 
+            variants={fadeIn('down', 'tween', 1.2, 1.4)}
+            className=''
+          >
             <a href='#'>
               {/* if header is active make logo 90 x 90 else 107 x 107px */}
               <img 
@@ -94,12 +103,15 @@ const Header = () => {
                 }`} 
               />
             </a>
-          </div>
+          </motion.div>
 
           {/* socials icons */}
-          <div>
+          <motion.div 
+            variants={fadeIn('down', 'tween', 1.4, 1.4)}
+            className='hidden lg:flex'
+          >
             <Socials />
-          </div>
+          </motion.div>
 
           {/* nav */}
           <motion.div 
@@ -111,7 +123,7 @@ const Header = () => {
             <Nav />
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </motion.header>
   ) 
 };
