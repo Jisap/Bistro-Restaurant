@@ -1,7 +1,7 @@
 import React from 'react';
 import { menuData } from '../data'
 import { motion } from 'framer-motion';
-import { fadeIn } from '../variants';
+import { fadeIn, staggerContainer } from '../variants';
 
 
 const Menu = () => {
@@ -16,17 +16,44 @@ const Menu = () => {
 
       {/* text */}
       <div className='relative z-10 top-72 lg:top-52'>
-        <div className='container mx-auto flex flex-col items-center text-center'>
-          <h2 className='h2 capitalize text-white  max-w-[400px] text-center'>{title}</h2>
-          <p className='text-white/70 capitalize mb-8'>{subtitle}</p>
-          <div>
+        <motion.div 
+          variants={staggerContainer}
+          initial='hidden'
+          whileInView={'show'}
+          viewport={{once: false, amount: 0.1}}
+          className='container mx-auto flex flex-col items-center text-center'
+        >
+          <motion.h2 
+            className='h2 capitalize text-white  max-w-[400px] text-center'
+            variants={fadeIn('down', 'tween', 0.2, 1.6)}
+          >
+            {title}
+          </motion.h2>
+          <motion.p
+            variants={fadeIn('down', 'tween', 0.4, 1.6)}
+            className='text-white/70 capitalize mb-8'>
+            {subtitle}
+          </motion.p>
+          <motion.div
+            variants={fadeIn('down', 'tween', 0.6, 1.6)}
+          >
             <img src={modelImg} alt="" />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* menu gallery */}
-      <div className='relative top-80 lg:top-96'>
+      <motion.div 
+        initial={{ opacity: 0, y: 150 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ 
+          type: 'tween',
+          delay: 0.2,
+          duration: 1.6,
+          ease: 'easeOut'  
+        }}
+        className='relative top-80 lg:top-96'
+      >
         <div className='container mx-auto'>
           <div className='lg:-mt-24 min-h-[590px] z-30 mb-8 md:mb-4 xl:mb-16'>
             {/* grid */}
@@ -47,9 +74,13 @@ const Menu = () => {
                       </div>
                       {/* text */}
                       <div className='bg-[#fff3e4] flex-1 flex flex-col justify-center px-6 lg:p-12 lg:max-h-[250px] xl:max-h-max'>
-                        <div>
-                          <div>{name}</div>
-                          <div>{price}</div>
+                        <div className='text-center'>
+                          <div className='text-xl font-semibold text-dark xl:text-2xl'>
+                            {name}
+                          </div>
+                          <div className='my-1 text-[20px] lg:text-[40px] lg:my-6 text-accent font-semibold'>
+                            {price}
+                          </div>
                           <div>{description}</div>
                         </div>
                       </div>
@@ -60,7 +91,7 @@ const Menu = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
     </section>
   )
