@@ -8,7 +8,7 @@ import { fadeIn } from '../variants';
 
 
 const Team = () => {
-  
+
   const { pretitle, title, sub1, sub2, name, occupation, signatureImg, chefImg } = teamData;
 
   return (
@@ -16,15 +16,34 @@ const Team = () => {
       <div className='container mx-auto'>
         {/* text & image wrapper*/}
         <div className='flex flex-col lg:flex-row lg:gap-x-[120px] items-center lg:items-start'>
-           {/* text */}
-           <div className='flex-1 text-center lg:text-left lg:pt-16'>
+          {/* text */}
+          <motion.div 
+            variants={fadeIn('down', 'tween', 0.6, 1.6)}
+            initial='hidden'
+            whileInView={'show'}
+            className='flex-1 text-center lg:text-left lg:pt-16'
+          >
             <div className='pretitle'>{pretitle}</div>
             <h2 className='h2 capitalize'>{title}</h2>
-            <p>{sub1}</p>
+            <p className='mb-[60px]'>{sub1}</p>
             <p>{sub2}</p>
-           </div>
-           {/* image */}
-           <div className='flex-1'>image</div>
+            <div className='my-[26px]'>
+              <div className='text-2xl capitalize, font-semibold text-accent'>{name}</div>
+              <div className='text-[15px] font-semibold capitalize text-grey/70'>{occupation}</div>
+            </div>
+            <div className='flex justify-center lg:justify-start mb-6 lg:mb-0'>
+              <img src={signatureImg} alt="" />
+            </div>
+          </motion.div>
+          {/* image */}
+          <motion.div 
+            variants={fadeIn('up', 'tween', 0.7, 1.6)}
+            initial="hidden"
+            whileInView={"show"}
+            className='flex-1'
+          >
+            <img src={ chefImg } alt="" />
+          </motion.div>
         </div>
       </div>
     </section>
