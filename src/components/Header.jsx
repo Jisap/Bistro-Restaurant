@@ -74,7 +74,7 @@ const Header = () => {
             variants={fadeIn('down', 'tween', 1, 1.4)}
             className={`
               ${nav ? 'gap-y-0' : 'gap-y-2'}
-              flex bg-red-400 flex-col items-center justify-center w-12 h-12 p-3 order-2 lg:order-none cursor-pointer border-2 rounded-full`}
+              flex flex-col items-center justify-center w-12 h-12 p-3 order-2 lg:order-none cursor-pointer border-2 rounded-full`}
           >
             {/* bar */}
             <motion.div 
@@ -91,7 +91,7 @@ const Header = () => {
           {/* logo */}
           <motion.div 
             variants={fadeIn('down', 'tween', 1.2, 1.4)}
-            className=''
+            className='order-1 lg:order-none lg:ml-[11rem]'
           >
             <a href='#'>
               {/* if header is active make logo 90 x 90 else 107 x 107px */}
