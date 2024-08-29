@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { reservationData, reswervationData } from '../data';
+import { reservationData } from '../data';
 import DatePicker from 'react-datepicker';
 import TimePicker from 'react-time-picker';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../timepicker.css';
-import { FaUsers, FaCalendar, FaClock } from 'react-icons'
+import { FaUsers, FaCalendar, FaClock } from 'react-icons/fa'
 import { motion } from 'framer-motion';
 import { fadeIn, staggerContainer } from '../variants';
 
@@ -22,6 +22,7 @@ const Reservation = () => {
         <div>text</div>
         {/* form */}
         <form> 
+          
           {/* datepicker */}
           <div>
             <div className='flex items-center gap-x-[10px] font-semibold text-dark text-base mb-3'>
@@ -34,8 +35,22 @@ const Reservation = () => {
               onChange={(date) => setStartDate(date)}
             />
           </div>
+
           {/* timepicker */}
-          <div>timepicker</div>
+          <div>
+            <div className='flex items-center gap-x-[10px] font-semibold text-dark text-base mb-3'>
+              <FaClock />
+              <div>Choose Time</div>
+            </div>
+            <TimePicker 
+              className='input'
+              clearIcon={false}
+              clockIcon={false}
+              onChange={setValue}
+              value={value}
+            />
+          </div>
+
           {/* person number */}
           <div>person number</div>
         </form>
