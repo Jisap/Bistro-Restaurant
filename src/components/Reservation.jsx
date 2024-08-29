@@ -3,17 +3,20 @@ import { reservationData } from '../data';
 import DatePicker from 'react-datepicker';
 import TimePicker from 'react-time-picker';
 import 'react-datepicker/dist/react-datepicker.css';
-import '../timepicker.css';
 import { FaUsers, FaCalendar, FaClock } from 'react-icons/fa'
 import { motion } from 'framer-motion';
 import { fadeIn, staggerContainer } from '../variants';
 
+import 'react-time-picker/dist/TimePicker.css';
+import 'react-clock/dist/Clock.css';
+import '../timepicker.css';
 
 const Reservation = () => {
 
   const { title, subtitle, modelImg, btnText } = reservationData;
   const [startDate, setStartDate] = useState(new Date());
-  const [value, setValue] = useState('10:00')
+  const [value, setValue] = useState('10:00');
+
 
   return (
     <div className='relative top-96 z-30 pb-20 lg:py-[100px]'>
@@ -32,7 +35,7 @@ const Reservation = () => {
             <DatePicker 
               className='input'
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={setValue}
             />
           </div>
 
@@ -44,9 +47,12 @@ const Reservation = () => {
             </div>
             <TimePicker 
               className='input'
-              clearIcon={false}
-              clockIcon={false}
-              onChange={setValue}
+              clearIcon={true}
+              clockIcon={true}
+              format='hh:mm a'
+              minDetail='hour'
+              maxDetail='hour'
+              onChange={onchange}
               value={value}
             />
           </div>
